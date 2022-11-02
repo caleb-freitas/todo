@@ -35,12 +35,12 @@ export const Tasks = () => {
           {...register('title')}
           type="text"
           placeholder="Add a new task"
-          className="w-[638px] rounded-lg border-[1px] border-gray-700 bg-gray-500 px-4 text-gray-100 placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-600"
+          className="w-[638px] rounded-lg border-[1px] border-gray-7000 bg-gray-5000 px-4 text-gray-100 placeholder:text-gray-3000 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-6000"
         />
         <button
           type="submit"
           disabled={isSubmitting}
-          className="flex items-center justify-center gap-2 rounded-lg bg-blue-600 p-4 font-bold text-gray-100 transition hover:bg-blue-300"
+          className="flex items-center justify-center gap-2 rounded-lg bg-blue-6000 p-4 font-bold text-gray-1000 transition hover:bg-blue-3000"
         >
           Add
           <PlusCircle weight="bold" />
