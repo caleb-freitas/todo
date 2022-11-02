@@ -1,6 +1,8 @@
 import { PlusCircle } from 'phosphor-react'
 import * as z from 'zod'
 import { useForm } from 'react-hook-form'
+import { useState } from 'react'
+import { TaskCard } from './TaskCard'
 
 const addTaskInput = z.object({
   title: z.string().min(3).max(120),
@@ -9,35 +11,48 @@ const addTaskInput = z.object({
 type AddTaskInput = z.infer<typeof addTaskInput>
 
 export const Tasks = () => {
+  const [tasks, setTasks] = useState<AddTaskInput[]>([])
+
   const {
+    reset,
     register,
     handleSubmit,
     formState: { isSubmitting },
   } = useForm<AddTaskInput>()
 
-  const handleAddTask = (data: AddTaskInput) => console.log(data)
+  const handleAddTask = (task: AddTaskInput) => {
+    setTasks((state) => [task, ...state])
+    reset()
+  }
 
   return (
     <main>
       <form
         onSubmit={handleSubmit(handleAddTask)}
-        className="flex justify-center -mt-7 gap-2"
+        className="-mt-7 mb-8 flex justify-center gap-2"
       >
         <input
           {...register('title')}
           type="text"
           placeholder="Add a new task"
-          className="bg-gray-500 w-[638px] border-[1px] border-gray-700 rounded-lg text-gray-100 placeholder:text-gray-300 px-4 focus:ring-2 focus:ring-purple-600 focus:outline-none focus:ring-inset"
+          className="w-[638px] rounded-lg border-[1px] border-gray-700 bg-gray-500 px-4 text-gray-100 placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-600"
         />
         <button
           type="submit"
           disabled={isSubmitting}
-          className="bg-blue-600 hover:bg-blue-300 transition p-4 rounded-lg flex gap-2 text-gray-100 font-bold items-center justify-center"
+          className="flex items-center justify-center gap-2 rounded-lg bg-blue-600 p-4 font-bold text-gray-100 transition hover:bg-blue-300"
         >
           Add
           <PlusCircle weight="bold" />
         </button>
       </form>
+      {tasks.map((task, index) => {
+        return (
+          <div key={index} className="flex justify-center">
+            <TaskCard title={task.title} />
+          </div>
+        )
+      })}
     </main>
   )
 }
