@@ -1,5 +1,11 @@
 import { Header } from './components/Header'
+import { Tasks } from './components/Tasks'
 
 export const App = () => {
-  return <Header />
+  return (
+    <>
+      <Header />
+      <Tasks />
+    </>
+  )
 }

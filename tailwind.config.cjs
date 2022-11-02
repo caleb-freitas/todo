@@ -29,6 +29,7 @@ module.exports = {
         300: '#4EA8DE',
         600: '#1E6F9F',
       },
+      transparent: 'transparent',
     },
     extend: {},
   },

@@ -5,8 +5,9 @@
 @tailwind utilities;
 
 @layer base {
-  * {
-    @apply font-inter
+  body {
+    @apply font-inter;
+    @apply bg-gray-600;
   }
 }
 
