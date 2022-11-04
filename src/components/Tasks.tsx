@@ -66,7 +66,7 @@ export const Tasks = () => {
           {...register('title')}
           type="text"
           placeholder="Add a new task"
-          className="w-[638px] rounded-lg border-[1px] border-gray-7000 bg-gray-5000 px-4 text-gray-100 placeholder:text-gray-3000 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-6000"
+          className="w-[615px] rounded-lg border-[1px] border-gray-7000 bg-gray-5000 px-4 text-gray-100 placeholder:text-gray-3000 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-6000"
         />
         <button
           type="submit"

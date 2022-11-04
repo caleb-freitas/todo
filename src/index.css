@@ -17,6 +17,11 @@
   box-sizing: border-dox;
 }
 
+input,
+button {
+  all: unset;
+}
+
 :root {
   line-height: 140%;
   font-synthesis: none;
