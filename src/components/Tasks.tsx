@@ -36,6 +36,13 @@ export const Tasks = () => {
     reset()
   }
 
+  const handleDeleteTask = (id: string) => {
+    const tasksWithoutDeleted = tasks.filter((task) => {
+      return task.id !== id
+    })
+    setTasks(tasksWithoutDeleted)
+  }
+
   return (
     <main>
       <form
@@ -60,7 +67,7 @@ export const Tasks = () => {
       {tasks.map((task) => {
         return (
           <div key={task.id} className="flex justify-center">
-            <TaskCard title={task.title} />
+            <TaskCard task={task} onDeleteTask={handleDeleteTask} />
           </div>
         )
       })}
