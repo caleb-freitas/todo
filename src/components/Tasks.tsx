@@ -9,6 +9,7 @@ import { DoesNotHaveTasks } from './DoesNotHaveTasks'
 const taskSchema = z.object({
   id: z.string().cuid(),
   title: z.string().min(3).max(120),
+  finished: z.boolean(),
 })
 
 const addTaskInput = z.object({
@@ -31,6 +32,7 @@ export const Tasks = () => {
   const handleAddTask = (data: AddTaskInput) => {
     const task = {
       id: cuid(),
+      finished: false,
       ...data,
     }
     setTasks((state) => [task, ...state])
@@ -42,6 +44,16 @@ export const Tasks = () => {
       return task.id !== id
     })
     setTasks(tasksWithoutDeleted)
+  }
+
+  const handleFinishTask = (id: string) => {
+    const task = tasks.find((task) => task.id === id)
+    if (task!.finished === true) {
+      task!.finished = false
+    } else {
+      task!.finished = true
+    }
+    setTasks((state) => [...state])
   }
 
   return (
@@ -65,11 +77,34 @@ export const Tasks = () => {
           <PlusCircle weight="bold" />
         </button>
       </form>
+      <div className="m-auto mb-16 flex w-[736px] justify-between border-b-[1px] border-b-gray-4000 pb-6">
+        <div className="flex gap-2 font-bold text-blue-6000">
+          <p>Created tasks</p>
+          <span className="rounded-xl bg-gray-4000 px-2 font-bold text-gray-2000">
+            {tasks.length}
+          </span>
+        </div>
+        <div className="flex gap-2 font-bold text-purple-6000">
+          <p>Finished tasks</p>
+          <span className="rounded-xl bg-gray-4000 px-2 font-bold text-gray-2000">
+            {
+              tasks.filter((task) => {
+                return task.finished === true
+              }).length
+            }{' '}
+            of {tasks.length}
+          </span>
+        </div>
+      </div>
       {tasks.length === 0 && <DoesNotHaveTasks />}
       {tasks.map((task) => {
         return (
           <div key={task.id} className="flex justify-center">
-            <TaskCard task={task} onDeleteTask={handleDeleteTask} />
+            <TaskCard
+              task={task}
+              onDeleteTask={handleDeleteTask}
+              onFinishTask={handleFinishTask}
+            />
           </div>
         )
       })}
