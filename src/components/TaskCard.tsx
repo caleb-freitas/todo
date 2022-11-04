@@ -31,9 +31,9 @@ export const TaskCard = ({
           id="checked-checkbox"
           type="checkbox"
           onClick={handleFinishTask}
-          className="peer h-4 w-4 rounded-full bg-gray-4000 ring-2 ring-blue-6000 ring-offset-0 checked:bg-purple-6000 checked:ring-purple-6000"
+          className="ring-inset-0 peer h-3 w-3 rounded-full bg-gray-4000 ring-2 ring-blue-6000 checked:bg-purple-6000 checked:ring-purple-6000"
         />
-        <p className="text-gray-1000 peer-checked:text-gray-3000 peer-checked:line-through">
+        <p className="text-sm text-gray-1000 peer-checked:text-gray-3000 peer-checked:line-through">
           {task.title}
         </p>
       </div>
