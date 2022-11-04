@@ -17,11 +17,6 @@
   box-sizing: border-dox;
 }
 
-button {
-  appearance: none;
-  -webkit-appearance: none;
-}
-
 :root {
   line-height: 140%;
   font-synthesis: none;
