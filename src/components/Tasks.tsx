@@ -80,13 +80,13 @@ export const Tasks = () => {
       <div className="m-auto flex w-[736px] justify-between pb-6">
         <div className="flex gap-2 font-bold text-blue-6000">
           <p>Created tasks</p>
-          <span className="rounded-xl bg-gray-4000 px-2 font-bold text-gray-2000">
+          <span className="flex items-center rounded-xl bg-gray-4000 px-2 text-xs font-bold text-gray-2000">
             {tasks.length}
           </span>
         </div>
         <div className="flex gap-2 font-bold text-purple-6000">
           <p>Finished tasks</p>
-          <span className="rounded-xl bg-gray-4000 px-2 font-bold text-gray-2000">
+          <span className="flex items-center rounded-xl bg-gray-4000 px-2 text-xs font-bold text-gray-2000">
             {tasks.filter((task) => task.finished === true).length} of{' '}
             {tasks.length}
           </span>
