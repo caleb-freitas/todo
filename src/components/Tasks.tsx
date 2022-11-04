@@ -77,7 +77,7 @@ export const Tasks = () => {
           <PlusCircle weight="bold" />
         </button>
       </form>
-      <div className="m-auto mb-16 flex w-[736px] justify-between border-b-[1px] border-b-gray-4000 pb-6">
+      <div className="m-auto flex w-[736px] justify-between pb-6">
         <div className="flex gap-2 font-bold text-blue-6000">
           <p>Created tasks</p>
           <span className="rounded-xl bg-gray-4000 px-2 font-bold text-gray-2000">
@@ -87,12 +87,8 @@ export const Tasks = () => {
         <div className="flex gap-2 font-bold text-purple-6000">
           <p>Finished tasks</p>
           <span className="rounded-xl bg-gray-4000 px-2 font-bold text-gray-2000">
-            {
-              tasks.filter((task) => {
-                return task.finished === true
-              }).length
-            }{' '}
-            of {tasks.length}
+            {tasks.filter((task) => task.finished === true).length} of{' '}
+            {tasks.length}
           </span>
         </div>
       </div>
