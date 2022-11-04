@@ -2,16 +2,23 @@ import { PlusCircle } from 'phosphor-react'
 import * as z from 'zod'
 import { useForm } from 'react-hook-form'
 import { useState } from 'react'
+import cuid from 'cuid'
 import { TaskCard } from './TaskCard'
+
+const taskSchema = z.object({
+  id: z.string().cuid(),
+  title: z.string().min(3).max(120),
+})
 
 const addTaskInput = z.object({
   title: z.string().min(3).max(120),
 })
 
 type AddTaskInput = z.infer<typeof addTaskInput>
+type Task = z.infer<typeof taskSchema>
 
 export const Tasks = () => {
-  const [tasks, setTasks] = useState<AddTaskInput[]>([])
+  const [tasks, setTasks] = useState<Task[]>([])
 
   const {
     reset,
@@ -20,7 +27,11 @@ export const Tasks = () => {
     formState: { isSubmitting },
   } = useForm<AddTaskInput>()
 
-  const handleAddTask = (task: AddTaskInput) => {
+  const handleAddTask = (data: AddTaskInput) => {
+    const task = {
+      id: cuid(),
+      ...data,
+    }
     setTasks((state) => [task, ...state])
     reset()
   }
@@ -46,9 +57,9 @@ export const Tasks = () => {
           <PlusCircle weight="bold" />
         </button>
       </form>
-      {tasks.map((task, index) => {
+      {tasks.map((task) => {
         return (
-          <div key={index} className="flex justify-center">
+          <div key={task.id} className="flex justify-center">
             <TaskCard title={task.title} />
           </div>
         )

@@ -10,6 +10,7 @@
     "format": "npx prettier --write src"
   },
   "dependencies": {
+    "cuid": "^2.1.8",
     "flowbite": "^1.5.3",
     "flowbite-react": "^0.3.2",
     "phosphor-react": "^1.4.1",
