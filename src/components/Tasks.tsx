@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { useState } from 'react'
 import cuid from 'cuid'
 import { TaskCard } from './TaskCard'
+import { DoesNotHaveTasks } from './DoesNotHaveTasks'
 
 const taskSchema = z.object({
   id: z.string().cuid(),
@@ -64,6 +65,7 @@ export const Tasks = () => {
           <PlusCircle weight="bold" />
         </button>
       </form>
+      {tasks.length === 0 && <DoesNotHaveTasks />}
       {tasks.map((task) => {
         return (
           <div key={task.id} className="flex justify-center">
